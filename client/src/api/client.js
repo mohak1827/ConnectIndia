@@ -1,4 +1,8 @@
-const BASE_URL = '/api/v1';
+const BASE_URL = import.meta.env.VITE_API_URL
+  ? (import.meta.env.VITE_API_URL.endsWith('/api/v1') ? import.meta.env.VITE_API_URL : `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/v1`)
+  : (typeof window !== 'undefined' && window.location.hostname.includes('onrender.com')
+      ? 'https://connectindia-server.onrender.com/api/v1'
+      : '/api/v1');
 
 export async function apiClient(endpoint, options = {}) {
   const token = localStorage.getItem('connectindia_token') || localStorage.getItem('ci_token');

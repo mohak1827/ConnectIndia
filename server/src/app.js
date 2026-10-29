@@ -63,7 +63,7 @@ export function createApp() {
 
   // Basic security and parsing middlewares
   app.use(cors({
-    origin: env.CORS_ORIGIN || 'http://localhost:5173',
+    origin: (origin, callback) => callback(null, true),
     credentials: true,
   }));
   app.use(express.json({ limit: '1mb' }));
