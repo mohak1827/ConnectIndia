@@ -6,10 +6,12 @@ async function start() {
   await connectDB();
 
   const app = createApp();
+  const PORT = process.env.PORT || env.PORT || 5000;
 
-  app.listen(env.PORT, () => {
-    console.log(`[ConnectIndia Gateway] Server active and listening on port ${env.PORT}`);
-    // console.log(`[ConnectIndia Gateway] Environment: ${env.NODE_ENV}`);
+  app.listen(PORT, () => {
+    console.log(
+      `[ConnectIndia Gateway] Server active and listening on port ${PORT}`
+    );
   });
 }
 
